@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Poor+Story&family=Tourney:ital@1&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Color Generator</title>
+  </head>
+  <body>
+    <h1>Color Generator</h1>
+
+    <label>
+      <p>Red Range:</p>
+      <input id="range-red" step="1" type="range" min="0" max="255" value="0" />
+    </label>
+
+    <label>
+      <p>Green Range:</p>
+      <input
+        id="range-green"
+        step="1"
+        type="range"
+        min="0"
+        max="255"
+        value="0"
+      />
+    </label>
+
+    <label>
+      <p>Blue Range:</p>
+      <input
+        id="range-blue"
+        step="1"
+        type="range"
+        min="0"
+        max="255"
+        value="0"
+      />
+    </label>
+
+    <div id="random-color-box"></div>
+    <div id="table"></div>
+    <script src="scripts.js"></script>
+  </body>
+</html>

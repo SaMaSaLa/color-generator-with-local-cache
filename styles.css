@@ -1,0 +1,74 @@
+* {
+  font-weight: 400;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-size: 30px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.random {
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+  margin-left: 15px;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: "Tourney", cursive;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+input {
+  font-family: "Poor Story", cursive;
+  margin: 100px;
+  padding: 3px;
+}
+
+.table {
+  margin-left: 10px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.table tbody tr td {
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.table thead tr th {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#button {
+  cursor: pointer;
+}
+
+p,
+label {
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+input {
+  margin: 0.4rem;
+}
+
+#random-color-box {
+  width: 400px;
+  height: 490px;
+  margin: 30px;
+  background-color: black;
+}
+
+label input,
+label p {
+  margin: 10px;
+}
+
+label input {
+  width: 400px;
+}
