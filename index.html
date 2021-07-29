@@ -14,42 +14,59 @@
       rel="stylesheet"
     />
 
-    <title>Color Generator</title>
+    <title>Color Generator with Local Cache</title>
   </head>
   <body>
-    <h1>Color Generator</h1>
+    <h1>Color Generator with Local Cache</h1>
 
-    <label>
-      <p>Red Range:</p>
-      <input id="range-red" step="1" type="range" min="0" max="255" value="0" />
-    </label>
+    <div class="content">
+      <div class="color-generator">
+        <label>
+          <p>Red Range:</p>
+          <input
+            id="range-red"
+            step="1"
+            type="range"
+            min="0"
+            max="255"
+            value="0"
+          />
+        </label>
 
-    <label>
-      <p>Green Range:</p>
-      <input
-        id="range-green"
-        step="1"
-        type="range"
-        min="0"
-        max="255"
-        value="0"
-      />
-    </label>
+        <label>
+          <p>Green Range:</p>
+          <input
+            id="range-green"
+            step="1"
+            type="range"
+            min="0"
+            max="255"
+            value="0"
+          />
+        </label>
 
-    <label>
-      <p>Blue Range:</p>
-      <input
-        id="range-blue"
-        step="1"
-        type="range"
-        min="0"
-        max="255"
-        value="0"
-      />
-    </label>
+        <label>
+          <p>Blue Range:</p>
+          <input
+            id="range-blue"
+            step="1"
+            type="range"
+            min="0"
+            max="255"
+            value="0"
+          />
+        </label>
 
-    <div id="random-color-box"></div>
-    <div id="table"></div>
+        <div id="random-color-box"></div>
+        <input id="save-button" type="button" value="Save" />
+      </div>
+      <div class="saved-colors">
+        <h1 id="saved">Saved Colors</h1>
+        <input type="button" id="clear" value="Clear All" />
+        <div id="saved-div"></div>
+      </div>
+    </div>
+
     <script src="scripts.js"></script>
   </body>
 </html>

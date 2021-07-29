@@ -1,5 +1,8 @@
 {
   "editor.wordWrap": "on",
   "editor.fontFamily": "'Fira Code'",
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "liveServer.settings.port": 5501,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

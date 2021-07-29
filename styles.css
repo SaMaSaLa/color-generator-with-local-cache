@@ -4,6 +4,7 @@
   font-size: 30px;
   margin: 0px;
   padding: 0px;
+  user-select: none;
 }
 
 .random {
@@ -58,8 +59,8 @@ input {
 }
 
 #random-color-box {
-  width: 400px;
-  height: 490px;
+  width: 200px;
+  height: 200px;
   margin: 30px;
   background-color: black;
 }
@@ -71,4 +72,42 @@ label p {
 
 label input {
   width: 400px;
+}
+
+.color-div {
+  width: 100px;
+  height: 100px;
+}
+
+.saved-color-div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 0 0px 10px 15px;
+  float: left;
+}
+
+.content {
+  display: flex;
+}
+.color-generator,
+.saved-colors {
+  border: 3px solid rgb(255, 120, 54);
+  flex: 1;
+}
+
+#saved {
+  display: inline;
+}
+
+h1 {
+  margin: 10px 0px 0px 10px;
+}
+
+.content {
+  padding: 30px;
+}
+
+.saved-colors {
+  margin-left: 30px;
 }
