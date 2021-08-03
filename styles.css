@@ -75,17 +75,28 @@ label input {
   width: 400px;
 }
 
+.each-color-div {
+  display: inline-block;
+  width: 140px;
+  height: 190px;
+  text-align: center;
+}
+
 .color-div {
   width: 100px;
   height: 100px;
 }
 
+.btn-div {
+  display: flex;
+  flex-direction: column;
+}
 .saved-color-div {
   width: 100px;
   height: 100px;
   border: 1px solid black;
   margin: 0 0px 10px 15px;
-  float: left;
+  display: inline-block;
 }
 
 .content {

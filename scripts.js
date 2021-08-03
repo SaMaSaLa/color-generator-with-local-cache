@@ -8,7 +8,7 @@ const g = document.getElementById("range-green");
 const b = document.getElementById("range-blue");
 const btned = document.createElement("button");
 
-function updateColor() {
+function updateColorOfDemoBox() {
   const red = r.value;
   const green = g.value;
   const blue = b.value;
@@ -16,67 +16,92 @@ function updateColor() {
   colorDiv.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
-r.addEventListener("input", updateColor);
-g.addEventListener("input", updateColor);
-b.addEventListener("input", updateColor);
+r.addEventListener("input", updateColorOfDemoBox);
+g.addEventListener("input", updateColorOfDemoBox);
+b.addEventListener("input", updateColorOfDemoBox);
+
+// Remove this one. We should always add styles in CSS file.
+// Neither in HTML nor in JS.
 colorDiv.style.border = "3px solid black";
 
 const renderColorsFromLocalStorage = () => {
-  savedDiv.innerText = "";
-  let stringedColor = localStorage.getItem("colors");
-  let parsedColor = JSON.parse(stringedColor);
-  if (parsedColor === null) {
-    parsedColor = [];
-  }
-
-  for (let i = 0; i < parsedColor.length; i++) {
-    const eachColor = parsedColor[i];
-
-    let divTwo = document.createElement("div");
-    divTwo.style.backgroundColor = `rgb(${eachColor.red}, ${eachColor.green}, ${eachColor.blue})`;
-    divTwo.classList.add("saved-color-div");
-    savedDiv.appendChild(divTwo);
-  }
-
-  // Make sure you empty existing colors.
+  // Empty saved colors container
   savedDiv.innerText = "";
 
-  // Get color string from local storage
-  const colorString2 = JSON.stringify(localStorage.getItem("colors"));
+  // Get colors string from local storage
+  let colorsString = localStorage.getItem("colors");
 
-  // Convert string to array of objects
-  const colorArray = JSON.parse(colorString2);
+  // Convert colors string into an array of objects
+  let colorsArray = JSON.parse(colorsString);
 
-  // Iterate on the array
+  // If colors array is null, make sure it contains an empty array.
+  if (colorsArray === null) {
+    colorsArray = [];
+  }
+
+  // Iterage on colors array
   for (let i = 0; i < colorsArray.length; i++) {
-    const color = colorsArray[i]; // {r: 1, g: 2, b: 10}
+    // Get each color
+    const color = colorsArray[i];
 
-    // Now render this color
+    // Add a div to append the color div to
+    let savedColorDiv = document.createElement("div");
 
-    // Create a new div
-    // Set background color
-    // Append
+    // Add a class
+    savedColorDiv.classList.add("each-color-div");
+
+    // Append div to savedDiv container
+    savedDiv.appendChild(savedColorDiv);
+
+    // Create a new saved color div
+    let savedColorBox = document.createElement("div");
+    savedColorBox.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+    savedColorBox.classList.add("saved-color-div");
+
+    // Append to savedColorDiv
+    savedColorDiv.appendChild(savedColorBox);
+
+    // Create a new button
+    let btn = document.createElement("button");
+    btn.textContent = "Delete";
+    btn.setAttribute("data-index", i);
+
+    // Create a new div for button
+    let btnDiv = document.createElement("div");
+    savedColorDiv.appendChild(btnDiv);
+
+    // Append to btnDiv
+    btnDiv.appendChild(btn);
+
+    // inline block
+    btnDiv.style.display = "inline-block";
+    btnDiv.classList.add("btn-div");
   }
-  /*
-  [{r: 1, g: 2, b: 10}, {r: 100, g: 20, b: 200}, ....]
-      */
 };
 
 saveButton.addEventListener("click", function () {
-  let colors = localStorage.getItem("colors");
-  if (colors) {
-    colors = JSON.parse(colors);
-  } else {
-    colors = [];
+  // Get colors string from local storage
+  let colorsString = localStorage.getItem("colors");
+
+  // Parse colors string into array of objects
+  let colorsArray = JSON.parse(colorsString);
+
+  // If colors array contains null, assign an empty array
+  if (colorsArray === null) {
+    colorsArray = [];
   }
 
+  // Create new color object
   const newColor = { red: r.value, green: g.value, blue: b.value };
 
-  colors.push(newColor);
+  // Add new color to existing colors array
+  colorsArray.push(newColor);
 
-  let stringColors = JSON.stringify(colors);
+  // Convert colors array to colors string
+  colorsString = JSON.stringify(colorsArray);
 
-  localStorage.setItem("colors", stringColors);
+  // Save colors string into local storage
+  localStorage.setItem("colors", colorsString);
 
   renderColorsFromLocalStorage();
 });
@@ -86,31 +111,44 @@ clear.addEventListener("click", () => {
   renderColorsFromLocalStorage();
 });
 
-// After first load, render existing colors
-renderColorsFromLocalStorage();
-
 const deleteColorFromLocalStorage = (index) => {
   // Test if index is not null or undefined
 
   if (index === null || index === undefined || index.trim() === null) {
   } else {
     // Get color string from local storage
-    const colorString = JSON.stringify(localStorage.getItem("colors"));
+    const colorString = localStorage.getItem("colors");
 
     // Convert color string to an array
     const colorArray = JSON.parse(colorString);
 
     // Check if color array is null
     if (colorArray === null) {
-      colorArray === null;
+      colorArray = [];
     }
-
     // delete color at index from color array
+    colorArray.splice(index, 1);
 
     // convert color array to color string
+    let colorsStringed = JSON.stringify(colorArray);
 
     // save color string in local storage
+    localStorage.setItem("colors", colorsStringed);
 
     // Call render colors ui from local storage here
+    for (let i = 0; i < 1; i++) {
+      renderColorsFromLocalStorage(i);
+      i++;
+    }
   }
 };
+
+savedDiv.addEventListener("click", function (e) {
+  if (e.target.textContent === "Delete") {
+    let dataIndex = e.target.getAttribute("data-index");
+    deleteColorFromLocalStorage(dataIndex);
+  }
+});
+
+// After first load, render existing colors
+renderColorsFromLocalStorage();
