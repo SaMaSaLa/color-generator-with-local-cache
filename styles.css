@@ -21,9 +21,10 @@ h1 {
   margin-top: 10px;
 }
 
-input {
+input,
+button {
   font-family: "Poor Story", cursive;
-  margin: 100px;
+  margin: 10px;
   padding: 3px;
 }
 
@@ -110,4 +111,5 @@ h1 {
 
 .saved-colors {
   margin-left: 30px;
+  display: inline-block;
 }
